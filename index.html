@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MineSweeper</title>
+    <link rel="stylesheet" href="src/public/css/mina.css" />
+  </head>
+  <body>
+    <form id="dificuldade">
+      <label for="facil">
+        <input id="facil" type="radio" name="dificuldade" /> fácil 5 minutos e
+        33% de minas
+      </label>
+      <label for="medio">
+        <input id="medio" type="radio" name="dificuldade" /> médio 2 minutos e
+        47% de minas
+      </label>
+      <label for="dificil">
+        <input id="dificil" type="radio" name="dificuldade" /> difícil 430
+        segundos e 56% de minas
+      </label>
+      <label for="personalizado">
+        <input id="personalizado" type="radio" name="dificuldade" />
+        personalizado faça sua dificuldade
+      </label>
+
+      <label for="segundos">Coloque a quantidade de segundos</label>
+      <input id="segundos" type="number" min="0" max="59" />
+
+      <label for="minutos">Coloque a quantidade de minutos</label>
+      <input id="minutos" type="number" min="0" />
+
+      <label for="minas">Coloque a quantidade de minas</label>
+      <input id="minas" type="number" min="0" max="99" />
+
+      <input type="submit" value="Iniciar Jogo" />
+    </form>
+
+    <script type="module" src="src/public/js/dificuldade.js"></script>
+  </body>
+</html>

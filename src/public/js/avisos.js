@@ -1,6 +1,4 @@
 export class Aviso {
-
-  
   ctempo() {
     // Criar overlay
     const overlay = document.createElement("div");
@@ -184,14 +182,14 @@ export class Aviso {
       }
     });
   }
-  cvitoria(){
+  cvitoria() {
     const overlay = document.createElement("div");
     overlay.style.position = "fixed";
     overlay.style.top = "0";
     overlay.style.left = "0";
     overlay.style.width = "100%";
     overlay.style.height = "100%";
-    overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
+    overlay.style.backgroundColor = "rgb(0,0,0)";
     overlay.style.display = "flex";
     overlay.style.alignItems = "center";
     overlay.style.justifyContent = "center";
@@ -205,11 +203,11 @@ export class Aviso {
 
     // Criar caixa do aviso
     const aviso = document.createElement("div");
-    aviso.style.background = "rgba(255, 255, 0, 0.2)";
+    aviso.style.background = "#e7e428a5";
     aviso.style.color = "white";
     aviso.style.padding = "20px 40px";
     aviso.style.borderRadius = "12px";
-    aviso.style.fontSize = "20px";
+    aviso.style.fontSize = "30px";
     aviso.style.textAlign = "center";
     aviso.style.minWidth = "300px";
     aviso.style.boxShadow = "0 0 10px black";
@@ -217,7 +215,7 @@ export class Aviso {
     // Mensagem
     const mensagem = document.createElement("div");
     mensagem.id = "mensagem-alerta";
-    mensagem.textContent = "Você ganhou parabens!";
+    mensagem.textContent = "Parabéns, você sobreviveu por mais um dia!🏆";
     mensagem.style.marginBottom = "20px";
 
     // Botão OK

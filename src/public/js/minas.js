@@ -133,7 +133,7 @@ export function campoMinado(pminas, tempo) {
       celula.setAttribute("data-coluna", coluna);
       celula.setAttribute("data-linha", linha);
       celula.setAttribute("data-coluna", coluna);
-      celula.style.backgroundColor = "#d3d3d3";
+      celula.style.backgroundColor = "#a9a9a9ff";
       celula.style.color = "blue";
       gerenciarAudio.numeros.play();
       return;
@@ -142,7 +142,7 @@ export function campoMinado(pminas, tempo) {
       celula.textContent = "";
       celula.setAttribute("data-aberto", "true");
       celula.setAttribute("aria-label", "célula revelada sem minas ao redor");
-      celula.style.backgroundColor = "#b0d4f1";
+      celula.style.backgroundColor = "#a9a9a9ff";
       gerenciarAudio.click.play();
     }
   }
@@ -170,7 +170,7 @@ export function campoMinado(pminas, tempo) {
         "aria-label",
         `célula revelada com ${minasAoRedor} minas ao redor`
       );
-      celula.style.backgroundColor = "#d3d3d3";
+      celula.style.backgroundColor = "#a9a9a9ff";
       celula.style.color = "blue";
       gerenciarAudio.numeros.play();
       return;
@@ -178,7 +178,7 @@ export function campoMinado(pminas, tempo) {
       // Se é zero, mostra só ela
       celula.textContent = "";
       celula.setAttribute("aria-label", "célula revelada sem minas ao redor");
-      celula.style.backgroundColor = "#b0d4f1";
+      celula.style.backgroundColor = "#a9a9a9ff";
       gerenciarAudio.click.play();
 
       // Revela apenas as 8 adjacentes SEM CHAMAR revelar() de novo
@@ -220,14 +220,14 @@ export function campoMinado(pminas, tempo) {
       celula.style.width = `${tamanhoCelula}px`;
       celula.style.height = `${tamanhoCelula}px`;
       celula.style.backgroundColor = "lightgray";
-      celula.style.border = "2px solid #818181ff";
+      celula.style.border = "2px solid #636363ff";
       celula.style.boxSizing = "border-box";
       celula.style.cursor = "pointer";
       celula.style.display = "flex";
       celula.style.alignItems = "center";
       celula.style.justifyContent = "center";
       celula.style.fontWeight = "bold";
-      celula.style.fontSize = "16px";
+      celula.style.fontSize = "40px";
       //mudando o mouse
       if (verdade) {
         celula.addEventListener("mouseenter", () => {
@@ -273,8 +273,21 @@ export function campoMinado(pminas, tempo) {
                   const cMina = tabuleiroVisual.querySelector(
                     `[data-linha='${x}'][data-coluna='${y}']`
                   );
-                  cMina.textContent = "💣";
-                  cMina.style.backgroundColor = "red";
+                  // mostrar vídeo de explosão na célula
+                  if (cMina) {
+                    cMina.style.backgroundColor = "red";
+                    cMina.innerHTML = "";
+                    const vv = document.createElement("video");
+                    vv.src = "src/public/img/Bomba.mp4";
+                    vv.autoplay = true;
+                    vv.muted = true;
+                    vv.playsInline = true;
+                    vv.className = "explosion-video";
+                    vv.setAttribute("aria-hidden", "true");
+                    cMina.appendChild(vv);
+                    const __p = vv.play();
+                    if (__p && __p.catch) __p.catch(() => {});
+                  }
                 }
               }
             }
@@ -293,7 +306,7 @@ export function campoMinado(pminas, tempo) {
         }
 
         // vitória
-        if (c >= linhas * colunas - totalMinas) {
+        if (c >= linhas * colunas - totalMinas - 1) {
           verdade = false;
           gerenciarAviso.cvitoria();
           gerenciarAudio.vitoria.play();
@@ -319,7 +332,7 @@ export function campoMinado(pminas, tempo) {
           celula.textContent = "🚩";
           celula.setAttribute("aria-label", "bandeira marcada");
           celula.style.color = "red";
-          celula.style.fontSize = "20px";
+          celula.style.fontSize = "30px";
         }
       });
 
